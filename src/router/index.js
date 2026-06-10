@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App.jsx"
 import Body from "../components/Body";
 import ContactUs from "../components/ContactUs.jsx";
+import ProductDetail from "../components/ProductDetail.jsx";
 const appRouter = createBrowserRouter([
     {
         path: "/",
@@ -14,6 +15,10 @@ const appRouter = createBrowserRouter([
             {
                 path: "/contact",
                 Component: ContactUs
+            },
+            {
+                path:"/:id",
+                Component: ProductDetail
             }
         ]
     }

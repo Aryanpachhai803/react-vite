@@ -2,6 +2,7 @@ import ProductCard from "./ProductCard.jsx";
 import "../styles/Body.css"
 import { useEffect, useState } from "react";
 import ProductCardSkeleton from './ProductCardSkeleton.jsx';
+import { Link } from "react-router-dom";
 
 function Body() {
     const [productsList, setProductsList] = useState([]);
@@ -30,7 +31,6 @@ function Body() {
 
     return (
         <main className="product-cards">
-            <input type="text" name="" id="" />
             <div>
                 <button onClick={handleTopRatedProducts}>Top Rated Products</button>
                 {/* <button onClick={handleAdd}>Add</button> */}
@@ -38,7 +38,11 @@ function Body() {
             </div>
             {productsList.length === 0
                 ? Array.from({ length: 4 }).map((_, index) => <ProductCardSkeleton key={index} />)
-                : productsList.map((product) => <ProductCard data={product} key={product.id} />)}
+                : productsList.map((product) =>
+                    <Link to={`/${product.id}`} key={product.id}>
+                        <ProductCard data={product} />
+                    </Link>
+                )}
             {/*productsList.map((product) =>
                 <ProductCard data={product} key={product.id} />)
              <ProductCard title="Air Jordan 4" description="Comfy shoes with cool design" price="$99" image={rickandmorty} />
